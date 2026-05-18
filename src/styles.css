@@ -1,17 +1,27 @@
-
-@import "tailwindcss";
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#app {
-  min-height: 100%;
-}
-
 body {
-  margin: 0;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
+div.search-input > div {
+  border-radius: 2em;
+  margin-bottom: 0.5em;
+  width: 20vw;
+}
+
+div.artist-result > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 1em;
+  width: 18vw;
+}
+
+div.result-list {
+  font-size: large;
+}
+
+div.artist-result img {
+  margin-top: 0.5em;
+  width: 100%;
+}
