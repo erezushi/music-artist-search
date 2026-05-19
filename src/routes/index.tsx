@@ -1,11 +1,11 @@
 import { SearchResults } from '#/components';
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import type { ADBResponse } from '#/types';
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, KeyboardEvent } from 'react';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -31,6 +31,12 @@ function RouteComponent() {
     },
   });
 
+  const keyboardHandler = useCallback((event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      setSearchQuery(searchInput)
+    }
+  }, [searchInput]);
+
   const changeSearchInput = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setSearchInput(event.target.value);
@@ -38,23 +44,19 @@ function RouteComponent() {
     [],
   );
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setSearchQuery(searchInput);
-    }, 500);
-    return () => {
-      clearTimeout(timeout);
-    };
+  const onSubmitClick = useCallback(() => {
+    setSearchQuery(searchInput)
   }, [searchInput]);
 
   return (
-    <div className="result-list">
+    <div className="main-page" onKeyDown={keyboardHandler}>
       <TextField
         className="search-input"
         label="Artist search"
         value={searchInput}
         onChange={changeSearchInput}
       />
+      <Button variant='contained' className='submit-button' onClick={onSubmitClick}>Submit</Button>
       {searchQuery === '' ? (
         <div>Enter search query</div>
       ) : (
