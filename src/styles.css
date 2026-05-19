@@ -8,7 +8,7 @@ div.result-list {
 }
 
 div.search-input {
-  margin: 0.5em 0;
+  margin: 0.5em 0.5em 0.5em 0;
 }
 
 div.search-input > div {
@@ -16,14 +16,14 @@ div.search-input > div {
   width: 20vw;
 }
 
-div.artist-result > a {
+a.artist-result {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 18vw;
 }
 
-div.artist-result img {
+a.artist-result img {
   margin-top: 0.5em;
   width: 100%;
 }
