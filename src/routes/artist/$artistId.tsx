@@ -11,6 +11,8 @@ export const Route = createFileRoute('/artist/$artistId')({
   component: RouteComponent,
 });
 
+const { VITE_LASTFM_API_KEY } = import.meta.env;
+
 function RouteComponent() {
   const { artistId } = Route.useParams();
 
@@ -36,7 +38,7 @@ function RouteComponent() {
     queryKey: ['lastFMArtist', artist?.strArtist],
     queryFn: async () => {
       const response = await fetch(
-        `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist?.strArtist}&api_key=ba96566b0929695c0a0f90c0d7fc5ce5&format=json&limit=3`,
+        `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist?.strArtist}&api_key=${VITE_LASTFM_API_KEY}&format=json&limit=3`,
       );
 
       if (!response.ok) {
@@ -55,7 +57,7 @@ function RouteComponent() {
         queryKey: ['lastFMTopTrack', track.name],
         queryFn: async () => {
           const response = await fetch(
-            `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&artist=${artist?.strArtist}&track=${track.name}&api_key=ba96566b0929695c0a0f90c0d7fc5ce5&format=json`,
+            `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&artist=${artist?.strArtist}&track=${track.name}&api_key=${VITE_LASTFM_API_KEY}&format=json`,
           );
 
           if (!response.ok) {
