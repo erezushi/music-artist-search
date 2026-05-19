@@ -1,9 +1,9 @@
-import type { artistResponse } from '#/types';
+import type { ADBResponse } from '#/types';
 import { CircularProgress } from '@mui/material';
 import { Link } from '@tanstack/react-router';
 
 interface ISearchResultProps {
-  data?: artistResponse;
+  data?: ADBResponse;
   isLoading: boolean;
   error: Error | null;
 }
@@ -26,7 +26,7 @@ const SearchResults = (props: ISearchResultProps) => {
     <div>
       {data.artists?.map((artist) => (
         <div className="artist-result">
-          <Link to="/artists/$artistId" params={{ artistId: artist.idArtist }}>
+          <Link to="/artist/$artistId" params={{ artistId: artist.idArtist }}>
             {artist.strArtistThumb ? (
               <>
                 <span>{artist.strArtist}</span>

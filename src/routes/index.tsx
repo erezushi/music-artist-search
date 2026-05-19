@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useCallback, useEffect, useState } from 'react';
 
-import type { artistResponse } from '#/types';
+import type { ADBResponse } from '#/types';
 import type { ChangeEvent } from 'react';
 
 export const Route = createFileRoute('/')({
@@ -16,7 +16,7 @@ function RouteComponent() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const { data, isLoading, error } = useQuery({
-    queryKey: [searchQuery],
+    queryKey: ['search', searchQuery],
     queryFn: async () => {
       const response = await fetch(
         `https://www.theaudiodb.com/api/v1/json/123/search.php?s=${searchQuery}`,
@@ -27,7 +27,7 @@ function RouteComponent() {
         throw new Error(text);
       }
 
-      return response.json() as Promise<artistResponse>;
+      return response.json() as Promise<ADBResponse>;
     },
   });
 

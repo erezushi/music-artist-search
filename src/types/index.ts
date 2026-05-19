@@ -1,4 +1,4 @@
-export type artistResponse = {
+export type ADBResponse = {
   artists:
     | {
         idArtist: string;
@@ -53,4 +53,74 @@ export type artistResponse = {
         strLocked: string;
       }[]
     | null;
+};
+
+export type lastFMTopTracksResponse = {
+  toptracks: {
+    track: {
+      name: string;
+      playcount: string;
+      listeners: string;
+      mbid: string;
+      url: string;
+      streamable: string;
+      artist: {
+        name: string;
+        mbid: string;
+        url: string;
+      };
+      image: {
+        '#text': string;
+        size: 'small' | 'medium' | 'large' | 'extralarge';
+      }[];
+      '@attr': { rank: string };
+    }[];
+    '@attr': {
+      artist: string;
+      page: string;
+      perPage: string;
+      totalPages: string;
+      total: string;
+    };
+  };
+};
+
+export type lastFMTrackInfoResponse = {
+  track: {
+    name: string;
+    mbid: string;
+    url: string;
+    duration: string;
+    listeners: string;
+    playcount: string;
+    streamable: {
+      '#text': string;
+      fulltrack: string;
+    };
+    artist: {
+      name: string;
+      mbid: string;
+      url: string;
+    };
+    album: {
+      artist: string;
+      title: string;
+      url: string;
+      image: {
+        '#text': string;
+        size: 'small' | 'medium' | 'large' | 'extralarge';
+      }[];
+    };
+    toptags: {
+      tag: {
+        name: string;
+        url: string;
+      }[];
+    };
+    wiki: {
+      published: string;
+      summary: string;
+      content: string;
+    };
+  };
 };

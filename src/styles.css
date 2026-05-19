@@ -2,9 +2,17 @@ body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
+div.result-list {
+  font-size: large;
+  margin-left: 0.5em
+}
+
+div.search-input {
+  margin: 0.5em 0;
+}
+
 div.search-input > div {
   border-radius: 2em;
-  margin-bottom: 0.5em;
   width: 20vw;
 }
 
@@ -12,16 +20,36 @@ div.artist-result > a {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  margin: 1em;
   width: 18vw;
-}
-
-div.result-list {
-  font-size: large;
 }
 
 div.artist-result img {
   margin-top: 0.5em;
   width: 100%;
+}
+
+span.artist-name {
+  display: block;
+
+  font-size: xx-large;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+img.artist-thumbnail {  
+  height: 30vh;
+  margin: 0.5em 0.5em 0.5em 0;
+  float: left;
+}
+
+span.artist-bio {
+  font-size: large;
+}
+
+div.top-tracks {
+  margin-top: 1em;
+}
+
+span.top-tracks-title {
+  text-decoration: underline;
 }
